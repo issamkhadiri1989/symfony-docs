@@ -99,7 +99,8 @@ but here's a short example::
                 'constraints' => new Length(['min' => 3]),
             ])
             ->add('lastName', TextType::class, [
-                'constraints' => [
+// the following configuration triggers an error `An error has occurred resolving the options of the form "Symfony\Component\Form\Extension\Core\Type\FormType": The option "constraints" with value array is expected to be of type "Symfony\Component\Validator\Constraint" or "Symfony\Component\Validator\Constraint[]", but one of the elements is of type "array".`
+                'constraints' => [  
                     new NotBlank(),
                     new Length(['min' => 3]),
                 ],
@@ -165,6 +166,9 @@ This can be done by setting the ``constraints`` option in the
 
 This means you can also do this when using the ``createFormBuilder()`` method
 in your controller::
+
+// the following configuration triggers an error `An error has occurred resolving the options of the form "Symfony\Component\Form\Extension\Core\Type\FormType": The option "constraints" with value array is expected to be of type "Symfony\Component\Validator\Constraint" or "Symfony\Component\Validator\Constraint[]", but one of the elements is of type "array".`
+
 
     $form = $this->createFormBuilder($defaultData, [
             'constraints' => [
